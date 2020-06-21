@@ -1,4 +1,4 @@
-package com.mcw.mycarwash.model;
+package com.mcw.mycarwash.Model;
 
 public class Client {
     private String client_id;

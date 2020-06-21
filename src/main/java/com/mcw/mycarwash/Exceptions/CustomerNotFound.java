@@ -1,4 +1,4 @@
-package com.mcw.mycarwash.exceptions;
+package com.mcw.mycarwash.Exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
