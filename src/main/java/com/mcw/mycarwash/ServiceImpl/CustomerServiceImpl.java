@@ -1,7 +1,8 @@
-package com.mcw.mycarwash.Service;
+package com.mcw.mycarwash.ServiceImpl;
 
 import com.mcw.mycarwash.Dao.CustomerDao;
 import com.mcw.mycarwash.Model.Customer;
+import com.mcw.mycarwash.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

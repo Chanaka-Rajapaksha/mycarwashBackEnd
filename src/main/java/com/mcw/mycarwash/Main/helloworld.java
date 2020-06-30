@@ -1,4 +1,4 @@
-package com.mcw.mycarwash.api;
+package com.mcw.mycarwash.Main;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

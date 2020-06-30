@@ -18,6 +18,27 @@ public class Customer {
     private String cusEmail;
     @Column
     private int cusMobileNumber;
+    @Column
+    private String cusPassword;
+    @Column
+    private int cusStates;
+
+
+    public String getCusPassword() {
+        return cusPassword;
+    }
+
+    public void setCusPassword(String cusPassword) {
+        this.cusPassword = cusPassword;
+    }
+
+    public int getCusStates() {
+        return cusStates;
+    }
+
+    public void setCusStates(int cusStates) {
+        this.cusStates = cusStates;
+    }
 
     public String getCusId() {
         return cusId;
@@ -67,6 +88,8 @@ public class Customer {
                 ", cusLname='" + cusLname + '\'' +
                 ", cusEmail='" + cusEmail + '\'' +
                 ", cusMobileNumber=" + cusMobileNumber +
+                ", cusPassword='" + cusPassword + '\'' +
+                ", cusStates=" + cusStates +
                 '}';
     }
 }

@@ -1,85 +1,152 @@
 package com.mcw.mycarwash.Model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name ="client")
 public class Client {
-    private String client_id;
-    private String client_fname;
-    private String client_lname;
-    private String client_addressLine1;
-    private String client_addressLine2;
-    private String client_addressLine3;
-    private int client_mobileNumber;
-    private String client_Email;
-    private String client_location;
 
-    public String getClient_id() {
-        return client_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private String clientId;
+    @Column
+    private String clientFname;
+    @Column
+    private String clientLname;
+    @Column
+    private String clientPassword;
+    @Column
+    private String clientAddressLine1;
+    @Column
+    private String clientAddressLine2;
+    @Column
+    private String clientAddressLine3;
+    @Column
+    private int clientMobileNumber;
+    @Column
+    private String clientEmail;
+    @Column
+    private Double clientLatitude;
+    @Column
+    private Double clientLongitude;
+    @Column
+    private int clientStates;
+
+    public Double getClientLatitude() {
+        return clientLatitude;
     }
 
-    public void setClient_id(String client_id) {
-        this.client_id = client_id;
+
+    public void setClientLatitude(Double clientLatitude) {
+        this.clientLatitude = clientLatitude;
     }
 
-    public String getClient_fname() {
-        return client_fname;
+    public Double getClientLongitude() {
+        return clientLongitude;
     }
 
-    public void setClient_fname(String client_fname) {
-        this.client_fname = client_fname;
+    public void setClientLongitude(Double clientLongitude) {
+        this.clientLongitude = clientLongitude;
     }
 
-    public String getClient_lname() {
-        return client_lname;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setClient_lname(String client_lname) {
-        this.client_lname = client_lname;
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 
-    public String getClient_addressLine1() {
-        return client_addressLine1;
+    public String getClientFname() {
+        return clientFname;
     }
 
-    public void setClient_addressLine1(String client_addressLine1) {
-        this.client_addressLine1 = client_addressLine1;
+    public void setClientFname(String clientFname) {
+        this.clientFname = clientFname;
     }
 
-    public String getClient_addressLine2() {
-        return client_addressLine2;
+    public String getClientLname() {
+        return clientLname;
     }
 
-    public void setClient_addressLine2(String client_addressLine2) {
-        this.client_addressLine2 = client_addressLine2;
+    public void setClientLname(String clientLname) {
+        this.clientLname = clientLname;
     }
 
-    public String getClient_addressLine3() {
-        return client_addressLine3;
+    public String getClientPassword() {
+        return clientPassword;
     }
 
-    public void setClient_addressLine3(String client_addressLine3) {
-        this.client_addressLine3 = client_addressLine3;
+    public void setClientPassword(String clientPassword) {
+        this.clientPassword = clientPassword;
     }
 
-    public int getClient_mobileNumber() {
-        return client_mobileNumber;
+    public String getClientAddressLine1() {
+        return clientAddressLine1;
     }
 
-    public void setClient_mobileNumber(int client_mobileNumber) {
-        this.client_mobileNumber = client_mobileNumber;
+    public void setClientAddressLine1(String clientAddressLine1) {
+        this.clientAddressLine1 = clientAddressLine1;
     }
 
-    public String getClient_Email() {
-        return client_Email;
+    public String getClientAddressLine2() {
+        return clientAddressLine2;
     }
 
-    public void setClient_Email(String client_Email) {
-        this.client_Email = client_Email;
+    public void setClientAddressLine2(String clientAddressLine2) {
+        this.clientAddressLine2 = clientAddressLine2;
     }
 
-    public String getClient_location() {
-        return client_location;
+    public String getClientAddressLine3() {
+        return clientAddressLine3;
     }
 
-    public void setClient_location(String client_location) {
-        this.client_location = client_location;
+    public void setClientAddressLine3(String clientAddressLine3) {
+        this.clientAddressLine3 = clientAddressLine3;
+    }
+
+    public int getClientMobileNumber() {
+        return clientMobileNumber;
+    }
+
+    public void setClientMobileNumber(int clientMobileNumber) {
+        this.clientMobileNumber = clientMobileNumber;
+    }
+
+    public String getClientEmail() {
+        return clientEmail;
+    }
+
+    public void setClientEmail(String clientEmail) {
+        this.clientEmail = clientEmail;
+    }
+
+
+
+    public int getClientStates() {
+        return clientStates;
+    }
+
+    public void setClientStates(int clientStates) {
+        this.clientStates = clientStates;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientId='" + clientId + '\'' +
+                ", clientFname='" + clientFname + '\'' +
+                ", clientLname='" + clientLname + '\'' +
+                ", clientPassword='" + clientPassword + '\'' +
+                ", clientAddressLine1='" + clientAddressLine1 + '\'' +
+                ", clientAddressLine2='" + clientAddressLine2 + '\'' +
+                ", clientAddressLine3='" + clientAddressLine3 + '\'' +
+                ", clientMobileNumber=" + clientMobileNumber +
+                ", clientEmail='" + clientEmail + '\'' +
+                ", clientLatitude='" + clientLatitude + '\'' +
+                ", clientLongitude='" + clientLongitude + '\'' +
+                ", clientStates=" + clientStates +
+                '}';
     }
 }

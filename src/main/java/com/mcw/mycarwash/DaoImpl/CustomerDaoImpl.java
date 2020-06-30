@@ -1,5 +1,6 @@
-package com.mcw.mycarwash.Dao;
+package com.mcw.mycarwash.DaoImpl;
 
+import com.mcw.mycarwash.Dao.CustomerDao;
 import com.mcw.mycarwash.Model.Customer;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
