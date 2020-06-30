@@ -11,9 +11,9 @@ public class Client {
     @Column
     private String clientId;
     @Column
-    private String clientFname;
+    private String clientName;
     @Column
-    private String clientLname;
+    private String clientDescription;
     @Column
     private String clientPassword;
     @Column
@@ -33,23 +33,6 @@ public class Client {
     @Column
     private int clientStates;
 
-    public Double getClientLatitude() {
-        return clientLatitude;
-    }
-
-
-    public void setClientLatitude(Double clientLatitude) {
-        this.clientLatitude = clientLatitude;
-    }
-
-    public Double getClientLongitude() {
-        return clientLongitude;
-    }
-
-    public void setClientLongitude(Double clientLongitude) {
-        this.clientLongitude = clientLongitude;
-    }
-
     public String getClientId() {
         return clientId;
     }
@@ -58,20 +41,20 @@ public class Client {
         this.clientId = clientId;
     }
 
-    public String getClientFname() {
-        return clientFname;
+    public String getClientName() {
+        return clientName;
     }
 
-    public void setClientFname(String clientFname) {
-        this.clientFname = clientFname;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
-    public String getClientLname() {
-        return clientLname;
+    public String getClientDescription() {
+        return clientDescription;
     }
 
-    public void setClientLname(String clientLname) {
-        this.clientLname = clientLname;
+    public void setClientDescription(String clientDescription) {
+        this.clientDescription = clientDescription;
     }
 
     public String getClientPassword() {
@@ -122,7 +105,21 @@ public class Client {
         this.clientEmail = clientEmail;
     }
 
+    public Double getClientLatitude() {
+        return clientLatitude;
+    }
 
+    public void setClientLatitude(Double clientLatitude) {
+        this.clientLatitude = clientLatitude;
+    }
+
+    public Double getClientLongitude() {
+        return clientLongitude;
+    }
+
+    public void setClientLongitude(Double clientLongitude) {
+        this.clientLongitude = clientLongitude;
+    }
 
     public int getClientStates() {
         return clientStates;
@@ -136,16 +133,16 @@ public class Client {
     public String toString() {
         return "Client{" +
                 "clientId='" + clientId + '\'' +
-                ", clientFname='" + clientFname + '\'' +
-                ", clientLname='" + clientLname + '\'' +
+                ", clientName='" + clientName + '\'' +
+                ", clientDescription='" + clientDescription + '\'' +
                 ", clientPassword='" + clientPassword + '\'' +
                 ", clientAddressLine1='" + clientAddressLine1 + '\'' +
                 ", clientAddressLine2='" + clientAddressLine2 + '\'' +
                 ", clientAddressLine3='" + clientAddressLine3 + '\'' +
                 ", clientMobileNumber=" + clientMobileNumber +
                 ", clientEmail='" + clientEmail + '\'' +
-                ", clientLatitude='" + clientLatitude + '\'' +
-                ", clientLongitude='" + clientLongitude + '\'' +
+                ", clientLatitude=" + clientLatitude +
+                ", clientLongitude=" + clientLongitude +
                 ", clientStates=" + clientStates +
                 '}';
     }
