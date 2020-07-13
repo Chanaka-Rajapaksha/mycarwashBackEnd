@@ -5,6 +5,7 @@ import com.mcw.mycarwash.Model.Client;
 import java.util.List;
 
 public interface ClientService {
+
     List<Client> getClientList();
 
     Client get(String id);

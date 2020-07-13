@@ -15,8 +15,8 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping("/client")
-    public List<Client> getClientList(){
-        return  clientService.getClientList();
+    public List<Client> getClientList() {
+        return clientService.getClientList();
     }
 
     @PostMapping("/client")
@@ -24,6 +24,7 @@ public class ClientController {
         clientService.saveClient(client);
         return client;
     }
+
     @GetMapping("/client/{id}")
     public Client getCustomer(@PathVariable String id) {
         return clientService.get(id);

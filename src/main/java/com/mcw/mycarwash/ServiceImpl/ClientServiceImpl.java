@@ -20,6 +20,7 @@ public class ClientServiceImpl implements ClientService {
     public List<Client> getClientList() {
         return clientDao.getClientList();
     }
+
     @Transactional
     @Override
     public Client get(String id) {
