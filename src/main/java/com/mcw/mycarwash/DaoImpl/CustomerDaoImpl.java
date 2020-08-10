@@ -1,20 +1,36 @@
 package com.mcw.mycarwash.DaoImpl;
 
 import com.mcw.mycarwash.Dao.CustomerDao;
+import com.mcw.mycarwash.Exceptions.CustomerNotFound;
 import com.mcw.mycarwash.Model.Customer;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import javax.sql.DataSource;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
 
+    private JdbcTemplate jdbcTemplate;
+    private NamedParameterJdbcTemplate jdbcTemplateName;
+
     @Autowired
     private EntityManager entityManager;
+
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.jdbcTemplateName = new NamedParameterJdbcTemplate(dataSource);
+    }
 
     @Override
     public List<Customer> getCustomer() {
@@ -25,9 +41,35 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
+    public Customer getCustomerByMobile(int mobileNumber) throws CustomerNotFound {
+
+
+        Customer customer = new Customer();
+        String query = "SELECT * FROM customer WHERE cus_mobile_number = '" + mobileNumber + "'";
+        List<Customer> customerList = jdbcTemplate.query(query, new BeanPropertyRowMapper(Customer.class));
+        for (Customer entity : customerList) {
+            customer = entity;
+        }
+
+
+        if (customer.getCusId() == null) {
+            throw new CustomerNotFound("Customer not found for :" + mobileNumber);
+        } else {
+            return customer;
+        }
+    }
+
+    @Override
     public Customer get(String id) {
-        Session currentSession = entityManager.unwrap(Session.class);
-        Customer customer = currentSession.get(Customer.class, id);
+        //  Session currentSession = entityManager.unwrap(Session.class);
+        // Customer customer = currentSession.get(Customer.class, id);
+        Customer customer = new Customer();
+        String query = "SELECT * FROM customer WHERE cus_id=" + id + "";
+
+        List<Customer> customerList = jdbcTemplate.query(query, new BeanPropertyRowMapper(Customer.class));
+        for (Customer entity : customerList) {
+            customer = entity;
+        }
         return customer;
     }
 
@@ -40,7 +82,7 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public void deleteCustomer(String id) {
         Session currentSession = entityManager.unwrap(Session.class);
-        Customer customer = currentSession.get(Customer.class,id);
+        Customer customer = currentSession.get(Customer.class, id);
         currentSession.delete(customer);
     }
 }

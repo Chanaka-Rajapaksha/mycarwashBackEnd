@@ -5,11 +5,8 @@ import com.mcw.mycarwash.Service.AdvertiesmenService;
 import com.mcw.mycarwash.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @RestController
 @RequestMapping("/avdapi")
@@ -22,14 +19,14 @@ public class AdvertiesmentController {
     private ClientService clientService;
 
     @GetMapping("/advetiesment")
-    public Map getAdvertiesment() {
+    public List<Advertiesments> getAdvertiesment() {
         //List ll = new ArrayList();
-       // ll.add(advertiesmenService.getAdvertiesmentList());
+        // ll.add(advertiesmenService.getAdvertiesmentList());
         //ll.add(clientService.getClientList());
-        Map<String, Object> result = new HashMap<String,Object>();
-        result.put("adv",advertiesmenService.getAdvertiesmentList());
-        result.put("client",clientService.getClientList());
-        return result;
+        // Map<String, Object> result = new HashMap<String,Object>();
+        //   result.put("adv",advertiesmenService.getAdvertiesmentList());
+        // result.put("client",clientService.getClientList());
+        return advertiesmenService.getAdvertiesmentList();
     }
 
     @PostMapping("/advetiesment")
