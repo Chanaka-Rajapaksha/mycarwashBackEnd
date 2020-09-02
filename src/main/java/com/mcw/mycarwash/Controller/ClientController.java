@@ -1,10 +1,12 @@
 package com.mcw.mycarwash.Controller;
 
 import com.mcw.mycarwash.Model.Client;
+import com.mcw.mycarwash.Model.Location;
 import com.mcw.mycarwash.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,5 +36,10 @@ public class ClientController {
     public String deleteCustomer(@PathVariable String id) {
         clientService.deleteClient(id);
         return "Client deleted" + id;
+    }
+
+    @PostMapping("/getNearLocations")
+    public List<Client> getNearestClientList(@RequestBody Location location) {
+        return clientService.getNearClientList(location);
     }
 }
