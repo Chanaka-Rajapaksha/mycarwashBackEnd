@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int userId;
     @Column
@@ -22,7 +22,6 @@ public class User {
     private int userMobileNumber;
     @Column
     private int isactive;
-
 
     public int getUserId() {
         return userId;
