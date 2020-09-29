@@ -13,4 +13,6 @@ public interface UserDao {
     void saveUser(User user);
 
     void deleteUser(String id);
+
+    User logingCheck(User user);
 }

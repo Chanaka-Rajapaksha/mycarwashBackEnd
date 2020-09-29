@@ -12,9 +12,11 @@ public interface UserService {
 
     User get(String id);
 
-    void saveUser(User client);
+    void saveUser(User user);
 
     void deleteUser(String id);
+
+    User logingCheck(User user);
 
 
 }

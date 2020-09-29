@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.Optional;
+
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {

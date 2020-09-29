@@ -38,4 +38,10 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(String id) {
         userDao.deleteUser(id);
     }
+
+    @Override
+    public User logingCheck(User user) {
+
+        return  userDao.logingCheck(user);
+    }
 }
