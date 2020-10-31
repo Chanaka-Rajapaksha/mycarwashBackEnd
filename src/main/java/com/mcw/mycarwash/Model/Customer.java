@@ -1,13 +1,16 @@
 package com.mcw.mycarwash.Model;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer")
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private String cusId;
     @Column
@@ -15,30 +18,13 @@ public class Customer {
     @Column
     private String cusLname;
     @Column
-    private String cusEmail;
-    @Column
     private int cusMobileNumber;
+    @Column
+    private String cusEmail;
     @Column
     private String cusPassword;
     @Column
-    private int cusStates;
-
-
-    public String getCusPassword() {
-        return cusPassword;
-    }
-
-    public void setCusPassword(String cusPassword) {
-        this.cusPassword = cusPassword;
-    }
-
-    public int getCusStates() {
-        return cusStates;
-    }
-
-    public void setCusStates(int cusStates) {
-        this.cusStates = cusStates;
-    }
+    private int isactive;
 
     public String getCusId() {
         return cusId;
@@ -64,14 +50,6 @@ public class Customer {
         this.cusLname = cusLname;
     }
 
-    public String getCusEmail() {
-        return cusEmail;
-    }
-
-    public void setCusEmail(String cusEmail) {
-        this.cusEmail = cusEmail;
-    }
-
     public int getCusMobileNumber() {
         return cusMobileNumber;
     }
@@ -80,16 +58,27 @@ public class Customer {
         this.cusMobileNumber = cusMobileNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "cusId='" + cusId + '\'' +
-                ", cusFname='" + cusFname + '\'' +
-                ", cusLname='" + cusLname + '\'' +
-                ", cusEmail='" + cusEmail + '\'' +
-                ", cusMobileNumber=" + cusMobileNumber +
-                ", cusPassword='" + cusPassword + '\'' +
-                ", cusStates=" + cusStates +
-                '}';
+    public String getCusEmail() {
+        return cusEmail;
+    }
+
+    public void setCusEmail(String cusEmail) {
+        this.cusEmail = cusEmail;
+    }
+
+    public String getCusPassword() {
+        return cusPassword;
+    }
+
+    public void setCusPassword(String cusPassword) {
+        this.cusPassword = cusPassword;
+    }
+
+    public int getIsactive() {
+        return isactive;
+    }
+
+    public void setIsactive(int isactive) {
+        this.isactive = isactive;
     }
 }

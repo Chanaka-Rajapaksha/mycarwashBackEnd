@@ -9,9 +9,9 @@ public class User {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private int userId;
+    private String userId;
     @Column
-    private int clientId;
+    private String clientId;
     @Column
     private String userName;
     @Column
@@ -21,21 +21,23 @@ public class User {
     @Column
     private int userMobileNumber;
     @Column
+    private String userRemark;
+    @Column
     private int isactive;
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public int getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(int clientId) {
+    public void setClientId(String clientId) {
         this.clientId = clientId;
     }
 
@@ -69,6 +71,14 @@ public class User {
 
     public void setUserMobileNumber(int userMobileNumber) {
         this.userMobileNumber = userMobileNumber;
+    }
+
+    public String getUserRemark() {
+        return userRemark;
+    }
+
+    public void setUserRemark(String userRemark) {
+        this.userRemark = userRemark;
     }
 
     public int getIsactive() {

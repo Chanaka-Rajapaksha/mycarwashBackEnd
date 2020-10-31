@@ -1,7 +1,6 @@
 package com.mcw.mycarwash.DaoImpl;
 
 import com.mcw.mycarwash.Dao.CustomerDao;
-import com.mcw.mycarwash.Exceptions.CustomerNotFound;
 import com.mcw.mycarwash.Model.Customer;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -12,7 +11,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public Customer getCustomerByMobile(int mobileNumber) throws CustomerNotFound {
+    public Customer getCustomerByMobile(int mobileNumber) {
 
 
         Customer customer = new Customer();
@@ -50,13 +48,8 @@ public class CustomerDaoImpl implements CustomerDao {
         for (Customer entity : customerList) {
             customer = entity;
         }
+        return customer;
 
-
-        if (customer.getCusId() == null) {
-            throw new CustomerNotFound("Customer not found for :" + mobileNumber);
-        } else {
-            return customer;
-        }
     }
 
     @Override

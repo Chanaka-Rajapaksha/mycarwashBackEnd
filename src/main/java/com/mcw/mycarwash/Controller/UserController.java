@@ -1,15 +1,11 @@
 package com.mcw.mycarwash.Controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mcw.mycarwash.Exceptions.CustomerNotFound;
-import com.mcw.mycarwash.Model.Customer;
+import com.mcw.mycarwash.Exceptions.ResourceNotFoundException;
 import com.mcw.mycarwash.Model.User;
 import com.mcw.mycarwash.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -21,20 +17,30 @@ public class UserController {
 
     @GetMapping("/user")
     public List<User> getClientList() {
-        return userService.getUserList();
+        if (!userService.getUserList().isEmpty()) {
+            return userService.getUserList();
+        } else {
+            throw new ResourceNotFoundException("No users in the system");
+        }
     }
 
     @PostMapping("/user")
     public User Save(@RequestBody User user) {
-        userService.saveUser(user);
+        try {
+            userService.saveUser(user);
+        } catch (Exception e) {
+
+        }
         return user;
     }
 
     @GetMapping("/user/{id}")
     public User getUser(@PathVariable String id) {
-
-        return userService.get(id);
-
+        if (userService.get(id) != null) {
+            return userService.get(id);
+        } else {
+            throw new ResourceNotFoundException("User not found like " + id);
+        }
     }
 
     @DeleteMapping("/user/{id}")
@@ -43,62 +49,5 @@ public class UserController {
         return "User deleted" + id;
     }
 
-    @PostMapping("/userlogin")
-    public String checkuser(@RequestBody User user) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            User newuser = userService.logingCheck(user);
-            if(newuser.getUserId()==0){
-                HashMap<String, String> responseMap = new HashMap<>();
-                responseMap.put("status", "404");
-                responseMap.put("message", "Not Found");
-                String jsonString = objectMapper.writeValueAsString(responseMap);
-                return jsonString;
-            }else{
-                String jsonString = objectMapper.writeValueAsString(newuser);
-                return jsonString;
-            }
-        } catch (CustomerNotFound ex) {
-            HashMap<String, String> responseMap = new HashMap<>();
-            responseMap.put("status", "404");
-            responseMap.put("message", ex.getMessage());
-            String jsonString = objectMapper.writeValueAsString(responseMap);
-            return jsonString;
-        } catch (JsonProcessingException ex) {
-            HashMap<String, String> responseMap = new HashMap<>();
-            responseMap.put("status", "404");
-            responseMap.put("message", ex.getMessage());
-            String jsonString = objectMapper.writeValueAsString(responseMap);
-            return jsonString;
-        }
-    }
-    @PostMapping("/userloginnew")
-    public String checkusernew(@RequestBody User user) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            User newuser = userService.logingCheck(user);
-            if(newuser.getUserId()==0){
-                HashMap<String, String> responseMap = new HashMap<>();
-                responseMap.put("status", "404");
-                responseMap.put("message", "Not Found");
-                String jsonString = objectMapper.writeValueAsString(responseMap);
-                return jsonString;
-            }else{
-                String jsonString = objectMapper.writeValueAsString(newuser);
-                return jsonString;
-            }
-        } catch (CustomerNotFound ex) {
-            HashMap<String, String> responseMap = new HashMap<>();
-            responseMap.put("status", "404");
-            responseMap.put("message", ex.getMessage());
-            String jsonString = objectMapper.writeValueAsString(responseMap);
-            return jsonString;
-        } catch (JsonProcessingException ex) {
-            HashMap<String, String> responseMap = new HashMap<>();
-            responseMap.put("status", "404");
-            responseMap.put("message", ex.getMessage());
-            String jsonString = objectMapper.writeValueAsString(responseMap);
-            return jsonString;
-        }
-    }
+
 }

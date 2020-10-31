@@ -6,122 +6,115 @@ import javax.persistence.*;
 @Table(name = "advertisement")
 public class Advertiesments {
 
-  @Id
-  //@GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column
-  private String advId;
-  @Column
-  private int clientId;
-  @Column
-  private int vehicleModelId;
-  @Column
-  private String advTitle;
-  @Column
+    @Id
+    @Column
+    private String advId;
+    @Column
+    private int clientId;
+    @Column
+    private int vehicleId;
+    @Column
+    private String advTitle;
+    @Column
     private String advDescription;
-  @Column
+    @Column
     private Double advAmount;
-  @Column
+    @Column
+    private Double advSecAmount;
+    @Column
     private Double advDiscountAmt;
-  @Column
-    private  String advImagePath;
-  @Column
-    private int rating;
-  @Column
+    @Column
+    private String advImage;
+    @Column
+    private int avdRating;
+    @Column
     private int isactive;
 
-    public String getAdvId() {
-        return advId;
-    }
+  public String getAdvId() {
+    return advId;
+  }
 
-    public void setAdvId(String advId) {
-        this.advId = advId;
-    }
+  public void setAdvId(String advId) {
+    this.advId = advId;
+  }
 
-    public int getClientId() {
-        return clientId;
-    }
+  public int getClientId() {
+    return clientId;
+  }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
+  public void setClientId(int clientId) {
+    this.clientId = clientId;
+  }
 
-    public int getVehicleModelId() {
-        return vehicleModelId;
-    }
+  public int getVehicleId() {
+    return vehicleId;
+  }
 
-    public void setVehicleModelId(int vehicleModelId) {
-        this.vehicleModelId = vehicleModelId;
-    }
+  public void setVehicleId(int vehicleId) {
+    this.vehicleId = vehicleId;
+  }
 
-    public String getAdvTitle() {
-        return advTitle;
-    }
+  public String getAdvTitle() {
+    return advTitle;
+  }
 
-    public void setAdvTitle(String advTitle) {
-        this.advTitle = advTitle;
-    }
+  public void setAdvTitle(String advTitle) {
+    this.advTitle = advTitle;
+  }
 
-    public String getAdvDescription() {
-        return advDescription;
-    }
+  public String getAdvDescription() {
+    return advDescription;
+  }
 
-    public void setAdvDescription(String advDescription) {
-        this.advDescription = advDescription;
-    }
+  public void setAdvDescription(String advDescription) {
+    this.advDescription = advDescription;
+  }
 
-    public Double getAdvAmount() {
-        return advAmount;
-    }
+  public Double getAdvAmount() {
+    return advAmount;
+  }
 
-    public void setAdvAmount(Double advAmount) {
-        this.advAmount = advAmount;
-    }
+  public void setAdvAmount(Double advAmount) {
+    this.advAmount = advAmount;
+  }
 
-    public Double getAdvDiscountAmt() {
-        return advDiscountAmt;
-    }
+  public Double getAdvSecAmount() {
+    return advSecAmount;
+  }
 
-    public void setAdvDiscountAmt(Double advDiscountAmt) {
-        this.advDiscountAmt = advDiscountAmt;
-    }
+  public void setAdvSecAmount(Double advSecAmount) {
+    this.advSecAmount = advSecAmount;
+  }
 
-    public String getAdvImagePath() {
-        return advImagePath;
-    }
+  public Double getAdvDiscountAmt() {
+    return advDiscountAmt;
+  }
 
-    public void setAdvImagePath(String advImagePath) {
-        this.advImagePath = advImagePath;
-    }
+  public void setAdvDiscountAmt(Double advDiscountAmt) {
+    this.advDiscountAmt = advDiscountAmt;
+  }
 
-    public int getRating() {
-        return rating;
-    }
+  public String getAdvImage() {
+    return advImage;
+  }
 
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
+  public void setAdvImage(String advImage) {
+    this.advImage = advImage;
+  }
 
-    public int getIsactive() {
-        return isactive;
-    }
+  public int getAvdRating() {
+    return avdRating;
+  }
 
-    public void setIsactive(int isactive) {
-        this.isactive = isactive;
-    }
+  public void setAvdRating(int avdRating) {
+    this.avdRating = avdRating;
+  }
 
-    @Override
-    public String toString() {
-        return "Advertiesments{" +
-                "advId='" + advId + '\'' +
-                ", clientId=" + clientId +
-                ", vehicleModelId=" + vehicleModelId +
-                ", advTitle='" + advTitle + '\'' +
-                ", advDescription='" + advDescription + '\'' +
-                ", advAmount=" + advAmount +
-                ", advDiscountAmt=" + advDiscountAmt +
-                ", advImagePath='" + advImagePath + '\'' +
-                ", rating=" + rating +
-                ", isactive=" + isactive +
-                '}';
-    }
+  public int getIsactive() {
+    return isactive;
+  }
+
+  public void setIsactive(int isactive) {
+    this.isactive = isactive;
+  }
 }

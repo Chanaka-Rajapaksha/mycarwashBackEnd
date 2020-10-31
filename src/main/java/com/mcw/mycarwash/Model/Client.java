@@ -3,19 +3,14 @@ package com.mcw.mycarwash.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="client")
+@Table(name = "client")
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private String clientId;
     @Column
     private String clientName;
-    @Column
-    private String clientDescription;
-    @Column
-    private String clientPassword;
     @Column
     private String clientAddressLine1;
     @Column
@@ -23,15 +18,19 @@ public class Client {
     @Column
     private String clientAddressLine3;
     @Column
-    private int clientMobileNumber;
-    @Column
     private String clientEmail;
+    @Column
+    private int clientContactNumber;
+    @Column
+    private String clientWeb;
     @Column
     private Double clientLatitude;
     @Column
     private Double clientLongitude;
     @Column
-    private int clientStates;
+    private String remark;
+    @Column
+    private int isactive;
 
     public String getClientId() {
         return clientId;
@@ -47,22 +46,6 @@ public class Client {
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
-    }
-
-    public String getClientDescription() {
-        return clientDescription;
-    }
-
-    public void setClientDescription(String clientDescription) {
-        this.clientDescription = clientDescription;
-    }
-
-    public String getClientPassword() {
-        return clientPassword;
-    }
-
-    public void setClientPassword(String clientPassword) {
-        this.clientPassword = clientPassword;
     }
 
     public String getClientAddressLine1() {
@@ -89,20 +72,28 @@ public class Client {
         this.clientAddressLine3 = clientAddressLine3;
     }
 
-    public int getClientMobileNumber() {
-        return clientMobileNumber;
-    }
-
-    public void setClientMobileNumber(int clientMobileNumber) {
-        this.clientMobileNumber = clientMobileNumber;
-    }
-
     public String getClientEmail() {
         return clientEmail;
     }
 
     public void setClientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
+    }
+
+    public int getClientContactNumber() {
+        return clientContactNumber;
+    }
+
+    public void setClientContactNumber(int clientContactNumber) {
+        this.clientContactNumber = clientContactNumber;
+    }
+
+    public String getClientWeb() {
+        return clientWeb;
+    }
+
+    public void setClientWeb(String clientWeb) {
+        this.clientWeb = clientWeb;
     }
 
     public Double getClientLatitude() {
@@ -121,29 +112,19 @@ public class Client {
         this.clientLongitude = clientLongitude;
     }
 
-    public int getClientStates() {
-        return clientStates;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setClientStates(int clientStates) {
-        this.clientStates = clientStates;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "clientId='" + clientId + '\'' +
-                ", clientName='" + clientName + '\'' +
-                ", clientDescription='" + clientDescription + '\'' +
-                ", clientPassword='" + clientPassword + '\'' +
-                ", clientAddressLine1='" + clientAddressLine1 + '\'' +
-                ", clientAddressLine2='" + clientAddressLine2 + '\'' +
-                ", clientAddressLine3='" + clientAddressLine3 + '\'' +
-                ", clientMobileNumber=" + clientMobileNumber +
-                ", clientEmail='" + clientEmail + '\'' +
-                ", clientLatitude=" + clientLatitude +
-                ", clientLongitude=" + clientLongitude +
-                ", clientStates=" + clientStates +
-                '}';
+    public int getIsactive() {
+        return isactive;
+    }
+
+    public void setIsactive(int isactive) {
+        this.isactive = isactive;
     }
 }
