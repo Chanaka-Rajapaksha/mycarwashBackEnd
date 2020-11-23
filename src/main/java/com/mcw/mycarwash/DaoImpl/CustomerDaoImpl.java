@@ -57,7 +57,7 @@ public class CustomerDaoImpl implements CustomerDao {
         //  Session currentSession = entityManager.unwrap(Session.class);
         // Customer customer = currentSession.get(Customer.class, id);
         Customer customer = new Customer();
-        String query = "SELECT * FROM customer WHERE cus_id=" + id + "";
+        String query = "SELECT * FROM customer WHERE cus_id='" + id + "'";
 
         List<Customer> customerList = jdbcTemplate.query(query, new BeanPropertyRowMapper(Customer.class));
         for (Customer entity : customerList) {

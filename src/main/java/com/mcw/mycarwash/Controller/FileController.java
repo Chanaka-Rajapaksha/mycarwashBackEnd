@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -24,11 +26,14 @@ public class FileController {
     @Autowired
     FileService fileService;
 
+    @Autowired
+    private ServletContext servletContext;
+
     @PostMapping("/upload")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, @RequestParam(value = "filename") String filename) {
         String message = "";
         try {
-            fileService.save(file,filename);
+            fileService.save(file, filename);
 
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
@@ -51,15 +56,20 @@ public class FileController {
 
     @GetMapping("/byname/{filename}")
     @CrossOrigin
-    public ResponseEntity getbyname(@PathVariable String filename){
-         final Path root = Paths.get("upload");
-        Resource file = fileService.load(filename);
-        String url = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/upload/")
-                .path(file.getFilename())
-                .toUriString();
+    public ResponseEntity getbyname(@PathVariable String filename) throws IOException {
+        final Path root = Paths.get("upload");
+        //Resource file = fileService.load(filename);
+        File file2 = new File(root.toUri().getPath().substring(1));
+        File[] files = file2.listFiles();
+        for (File f : files) {
+            String fname = f.getName().split("\\.")[0];
+            if (fname.equalsIgnoreCase(filename)) {
+                String url = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/upload/").path(f.getName()).toString();
+//                System.out.println(servletContext.getContextPath()+"/upolad/"+f.getName());
 
-        System.out.println(url);
+            }
+        }
         return null;
     }
 }

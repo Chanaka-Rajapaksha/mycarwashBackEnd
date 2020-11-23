@@ -4,12 +4,10 @@ import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name="doccode")
+@Table(name = "doccode")
 public class DocumentCode {
 
     @Id
-    @Column(columnDefinition = "BINARY(16)")
-    private UUID uuid;
     @Column
     private String docId;
     @Column
@@ -19,13 +17,6 @@ public class DocumentCode {
     @Column
     private String autoStartChr;
 
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
 
     public String getDocId() {
         return docId;

@@ -25,6 +25,26 @@ public class Customer {
     private String cusPassword;
     @Column
     private int isactive;
+    @Column
+    private String imageId;
+    @Column
+    private String imageURL;
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
+    }
 
     public String getCusId() {
         return cusId;

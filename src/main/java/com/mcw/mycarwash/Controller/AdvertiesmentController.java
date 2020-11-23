@@ -2,7 +2,6 @@ package com.mcw.mycarwash.Controller;
 
 import com.mcw.mycarwash.Model.Advertiesments;
 import com.mcw.mycarwash.Service.AdvertiesmenService;
-import com.mcw.mycarwash.Service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +30,4 @@ public class AdvertiesmentController {
     public Advertiesments getAdvetiesment(@PathVariable String id) {
         return advertiesmenService.get(id);
     }
-
 }

@@ -31,6 +31,27 @@ public class Client {
     private String remark;
     @Column
     private int isactive;
+    @Column
+    private String imageId;
+    @Column
+    private String imageURL;
+
+
+    public String getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
     public String getClientId() {
         return clientId;
