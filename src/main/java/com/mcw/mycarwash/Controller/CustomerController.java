@@ -6,6 +6,7 @@ import com.mcw.mycarwash.Model.Customer;
 import com.mcw.mycarwash.Model.ImageFile;
 import com.mcw.mycarwash.Service.CustomerService;
 import com.mcw.mycarwash.Service.DocumentCodeService;
+import com.mcw.mycarwash.Service.OtpService;
 import com.mcw.mycarwash.ServiceImpl.ImageFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,9 @@ public class CustomerController {
     private ImageFileService fileStorageService;
     @Autowired
     private DocumentCodeService documentCodeService;
+    @Autowired
+    public OtpService otpModeService;
+
 
     @GetMapping("/customer")
     public List<Customer> getCustomer() {
@@ -40,14 +44,24 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-        public Customer save(@RequestParam("customer") String model, @RequestParam("file") MultipartFile file) throws Exception {
+    public Customer save(@RequestBody Customer customer) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+//        Customer customer = mapper.readValue(model, Customer.class);
+        String cusId = documentCodeService.nextDocNumber("customer", "MCWCUS");
+        customer.setCusId(cusId);
+        customerService.saveCustomer(customer);
+        otpModeService.SendOTP(customer.getCusMobileNumber(), customer.getCusEmail());
+        return customer;
+    }
+
+    @PostMapping("/customernew")
+    public Customer saveNew(@RequestParam("customer") String model, @RequestParam("file") MultipartFile file) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         Customer customer = mapper.readValue(model, Customer.class);
         String cusId = documentCodeService.nextDocNumber("customer", "MCWCUS");
         String imageId = documentCodeService.nextDocNumber("customer", "IMG");
         customer.setCusId(cusId);
         customer.setImageId(imageId);
-
         ImageFile fileName = fileStorageService.storeFile(file, imageId);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/getfileurl/")
@@ -55,6 +69,7 @@ public class CustomerController {
                 .toUriString();
         customer.setImageURL(fileDownloadUri);
         customerService.saveCustomer(customer);
+        otpModeService.SendOTP(customer.getCusMobileNumber(), customer.getCusEmail());
         return customer;
     }
 

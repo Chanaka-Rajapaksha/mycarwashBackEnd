@@ -8,18 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.annotation.Resource;
 
 @SpringBootApplication
-public class MycarwashApplication implements CommandLineRunner {
+public class MycarwashApplication   {
 
-	@Resource
-	FileService storageService;
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(MycarwashApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		storageService.init();
-	}
+
 }

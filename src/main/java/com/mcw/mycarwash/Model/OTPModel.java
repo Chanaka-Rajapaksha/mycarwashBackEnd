@@ -1,15 +1,15 @@
 package com.mcw.mycarwash.Model;
 
 public class OTPModel {
-    private String mobileNumber;
+    private int mobileNumber;
     private String otp;
     private long expiryTime;
 
-    public String getMobileNumber() {
+    public int getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(String mobileNumber) {
+    public void setMobileNumber(int mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
